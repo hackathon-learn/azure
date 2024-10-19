@@ -32,6 +32,7 @@ jobs:
 
         - name: Deploy to AKS
           run: |
+            kubectl apply -f deployment.yaml 
             kubectl set image deployment/sampleapp sampleapp=${{ secrets.REGISTRY_LOGIN_SERVER }}/sampleapp:${{ github.sha }}
             kubectl rollout status deployment/sampleapp
 
