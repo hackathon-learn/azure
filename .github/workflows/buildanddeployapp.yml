@@ -1,6 +1,9 @@
 name: Build and Deploy App
 on:
   workflow_dispatch:
+  push:
+    paths:
+      - './Apps/Platform1/**'
 jobs:
     build-and-deploy:
         runs-on: ubuntu-latest
