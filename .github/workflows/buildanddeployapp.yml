@@ -3,7 +3,7 @@ on:
   workflow_dispatch:
   push:
     paths:
-      - './Apps/Platform1/**'
+      - 'Apps/Platform1/**'
 jobs:
     build-and-deploy:
         runs-on: ubuntu-latest
