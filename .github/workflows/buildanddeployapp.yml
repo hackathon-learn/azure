@@ -23,18 +23,22 @@ jobs:
             password: ${{ secrets.REGISTRY_PASSWORD }}
         - run: |
             cp -r ./Apps/Platform1/* .
-            docker build . -t ${{ secrets.REGISTRY_LOGIN_SERVER }}/sampleapp:${{ github.sha }}
-            docker push ${{ secrets.REGISTRY_LOGIN_SERVER }}/sampleapp:${{ github.sha }}
+            docker build . -t ${{ secrets.REGISTRY_LOGIN_SERVER }}/dssp:${{ github.sha }}
+            docker push ${{ secrets.REGISTRY_LOGIN_SERVER }}/dssp:${{ github.sha }}
 
         - name: Set up kubectl
           run: |
             az aks get-credentials --resource-group ${{ secrets.RESOURCE_GROUP }} --name platform1aks1
 
+        - name: Create Namespace
+          run: |
+            kubectl create namespace familyman || echo "Namespace already exists"
+
         - name: Deploy to AKS
           run: |
-            kubectl apply -f deployment.yaml 
-            kubectl set image deployment/sampleapp sampleapp=${{ secrets.REGISTRY_LOGIN_SERVER }}/sampleapp:${{ github.sha }}
-            kubectl rollout status deployment/sampleapp
+            kubectl apply -f deployment.yaml -n familyman
+            kubectl set image deployment/dssp dssp=${{ secrets.REGISTRY_LOGIN_SERVER }}/dssp:${{ github.sha }} -n familyman
+            kubectl rollout status deployment/dssp -n familyman
 
         #- name: 'Deploy to Azure Container Instances'
         #  uses: 'azure/aci-deploy@v1'
