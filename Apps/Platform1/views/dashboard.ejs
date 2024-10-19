@@ -1,0 +1,38 @@
+<%- include('layout.ejs'); %>
+
+<div class="container">
+    <div class="row justify-content-center">
+        <h3>Catalogue for <%= locals.user %></h3> <br/><br/>
+    </div>
+    <div>
+        <h4>
+            <% if ( locals.status == "NOTOK" ) {%>
+                We are unable to fetch Solutions or No Solution available for you. Please try again later.
+            <% } else { %>
+                <br />
+                <div class="row">
+                    <% repo.data.forEach(element => { %>
+                        <% if (!element.name.includes("familyman") ) { %>
+                        <div class="col-sm-3 mb-3 mb-sm-3">
+                            <div class="card" >
+                              <div class="card-body">
+                                <form method="post" action="/launchsolution">
+                                    <h5 class="card-title"><%= element.name %></h5>
+                                    <p class="card-text" style="font-size: 10px;"><%= element.description %></p>
+                                    <input type="text" name="reponame" value="<%= element.name %>" hidden="true">
+                                    <button type="submit" class="btn btn-primary">Create</button>
+                                </form>
+                            </div>
+                        </div>
+                      </div>
+                    <% }}); %>
+                </div>
+            <% } %>
+        </h4>
+    </div>
+</div>
+
+
+</body>
+
+</html>
