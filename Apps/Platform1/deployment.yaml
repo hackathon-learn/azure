@@ -1,19 +1,20 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: sampleapp
+  name: dssp
+  namespace: familyman
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: sampleapp
+      app: dssp
   template:
     metadata:
       labels:
-        app: sampleapp
+        app: dssp
     spec:
       containers:
-      - name: sampleapp
+      - name: dssp
         image: <initial-image>  # Specify a placeholder or the initial image
         ports:
         - containerPort: 80
