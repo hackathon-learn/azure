@@ -17,4 +17,4 @@ spec:
       - name: dssp
         image: <initial-image>  # Specify a placeholder or the initial image
         ports:
-        - containerPort: 80
+        - containerPort: 3000
