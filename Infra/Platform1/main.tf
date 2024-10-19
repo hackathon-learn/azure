@@ -5,7 +5,17 @@ terraform {
       version = "~>3.0"
     }
   }
+  cloud { 
+    organization = "hackathon-learn" 
+    workspaces { 
+      name = "hackathon-learn-azure" 
+    } 
+  } 
+  
 }
+
+
+
 
 provider "azurerm" {
   features {}

@@ -12,3 +12,5 @@ The output includes credentials that you must protect. Be sure that you do not i
   "tenant": "542b1027-72dc-4685-8674-175655720883"
 }
 nirmal [ ~ ]$ 
+
+TF API WbK2fIcZGESmsA.atlasv1.q4RgTolC6x98zGk644xEddlMdRJL3dwzVSSjWvXsN2IajL2xGVwsZhPpeoYcGJy76v0
