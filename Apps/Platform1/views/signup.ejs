@@ -1,0 +1,97 @@
+<%- include('header') -%>
+<br /><br />
+<div class="container  border py-5" style="background-color: rgba(107, 107, 112, 0.226); box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;">
+
+<div class="container overflow-hidden text-center signup-form " >
+    <div class="row gx-5" >
+      <div class="col " >
+       <div class="p-3 ">
+
+<div class="p-3 text-primary-emphasis bg-primary-subtle   rounded-1">
+    Register with FamilyMan
+</div>
+<% if(typeof errors != 'undefined') { %>
+    <% errors.forEach(error=>{ %>
+        
+        <%= error.message %>
+        
+    <% }) %>
+<% } %>
+  <br />
+
+
+        <form class="row g-1" action="/route/signup" method="post" >
+            <div class="col-md-6">
+            <label for="email" class="form-label">Email</label>
+            <input type="email" class="form-control " id="email" name="email" placeholder="Valid Email ID">
+            </div>
+            <div class="col-md-6">
+            <label for="password" class="form-label">Password</label>
+            <input type="password" class="form-control" id="password" name="password" placeholder="Strong Password">
+            </div>
+            <div class="col-12">
+            <label for="fname" class="form-label">First Name</label>
+            <input type="text" class="form-control" id="fname" name="fname" placeholder="First Name">
+            </div>
+            <div class="col-12">
+            <label for="lname" class="form-label">Last Name</label>
+            <input type="text" class="form-control" id="lname" name="lname" placeholder="Family Name">
+            </div>
+    
+            <div class="col-12">
+            <label for="usage" class="form-label">Account Type </label>
+            <select id="usage" class="form-select" name="usage">
+                <option selected>SaaS</option>
+                <option>PaaS</option>
+                <option>IaaS</option>
+            </select>
+
+            
+            </div>
+ 
+            <div class="col-12">
+            <div class="form-check mb-3">
+                <input class="form-check-input" type="checkbox" id="gridCheck" required>
+                <label class="form-check-label" for="gridCheck">
+                I very well know why am i here.
+                </label>
+            </div>
+            </div>
+            <div class="col-12">
+            <button type="submit" class="btn btn-primary">Sign Up</button>
+            
+            </div>
+        </form>
+
+  
+</div>
+</div>
+<div class="col">
+
+  <div class="container w-100 border py-3   " style="background-color: rgba(77, 77, 79, 0.226); box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;">
+
+    SaaS [ Best fit for Startups. ] <br/>
+       In SaaS, You dont worry about what is happening, just relax and use the UI to control the Infrastructure Provisioning in your company.
+   </div>
+   <br/>
+   <div class="container w-100 border py-3" style="background-color: rgba(77, 77, 79, 0.226); box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;">
+        PaaS [ Best Fit for mix of Developer and Less Infra Maintanance ] <br/>
+        In PaaS, We have got equal responsibility. You use our Infrastructure to run your CICD and Self Service Portal. how ever you have full control on the area allocated to you on our infra.
+   </div>
+   <br/>
+   <div class="container w-100 border py-3" style="background-color: rgba(77, 77, 79, 0.226); box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;">
+        IaaS [ Best fit for Developer Mind ] <br/>
+        In IaaS, You are the boss. Use our inteligent tool to deploy CICD Piplelines and Self Service Portal on your infra with few click.
+        Rest assured, All the updates and upgrateds we take care of , but still you have option to say yes or no to it. Which means, Once we deploy initially. You can decide what to do later.
+        Use your Team to build on top of what we gave or relay on us to get the net updates.
+   </div>
+
+</div>
+</div>
+</div>
+
+</div>
+<div class="container p-3 ">
+Worried about the costing ???
+</div>
+<%- include('footer') -%>

@@ -1,38 +1,93 @@
-<%- include('layout.ejs'); %>
+<%- include('header_inside') -%>
+<%- include('navbar') -%>
 
-<div class="container">
-    <div class="row justify-content-center">
-        <h3>Catalogue for <%= locals.user %></h3> <br/><br/>
+<br/><br/><br/>
+<div class="container text-center">
+    <div class="row">
+      <div class="col">
+        <div class="alter alert-success text-center black">
+            <h1> 
+                You are a <%= usertype %> user.
+            </h1>
+        </div> 
+        <br />
+      </div>
     </div>
-    <div>
-        <h4>
-            <% if ( locals.status == "NOTOK" ) {%>
-                We are unable to fetch Solutions or No Solution available for you. Please try again later.
-            <% } else { %>
-                <br />
-                <div class="row">
-                    <% repo.data.forEach(element => { %>
-                        <% if (!element.name.includes("familyman") ) { %>
-                        <div class="col-sm-3 mb-3 mb-sm-3">
-                            <div class="card" >
-                              <div class="card-body">
-                                <form method="post" action="/launchsolution">
-                                    <h5 class="card-title"><%= element.name %></h5>
-                                    <p class="card-text" style="font-size: 10px;"><%= element.description %></p>
-                                    <input type="text" name="reponame" value="<%= element.name %>" hidden="true">
-                                    <button type="submit" class="btn btn-primary">Create</button>
-                                </form>
-                            </div>
-                        </div>
-                      </div>
-                    <% }}); %>
-                </div>
-            <% } %>
-        </h4>
+    <div class="row">
+      <div class="col " >
+        <ul class="list-group list-group-flush"  style="width: fit-content;text-align: left;">
+            <li class="list-group-item">
+                <% if(locals.git == "YES" ) { %>
+                            <img src="/assets/OK.jpg" style="width: 25px;">&nbsp;GitHub Configured on <small><%= locals.gittime %></small></img>
+                <% } else { %> 
+                            <img src="/assets/NOK.jpg" style="width: 25px;">&nbsp;GitHub Not Configured</img>
+                 <% }  %> 
+            </li>
+            <li class="list-group-item">
+                <% if(locals.tf == "YES" ) { %>
+                    <img src="/assets/OK.jpg" style="width: 25px;">&nbsp;Terraform Configured on <small><%= locals.tftime %></small></img>
+                <% } else { %> 
+                            <img src="/assets/NOK.jpg" style="width: 25px;">&nbsp;Terraform Not Configured</img>
+                <% }  %>
+            </li>
+            <li class="list-group-item">
+                <% if(locals.cloud == "YES" ) { %>
+                    <img src="/assets/OK.jpg" style="width: 25px;">&nbsp;Cloud Configured on <small><%= locals.cloudtime %></small></img>
+                <% } else { %> 
+                            <img src="/assets/NOK.jpg" style="width: 25px;">&nbsp;Cloud Not Configured</img>
+                <% }  %>        
+            </li>
+        </ul>
+      </div>
+      <div class="col">
+        <div class="container mt-1" style="height: 20rem;width: 20rem;">
+            <h4 class="mb-4">Configuration Status</h4>
+            <canvas id="myChart" data-chart-data="<%= JSON.stringify(locals.data) %>" ></canvas>
+        </div>
+      </div>
     </div>
-</div>
+  </div>
+ 
 
 
-</body>
 
-</html>
+  
+
+
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script>
+        // Retrieve the data attribute from the canvas element
+        const canvas = document.getElementById('myChart');
+        const chartData = JSON.parse(canvas.getAttribute('data-chart-data'));
+
+        // Now use the data to create the chart
+        var ctx = canvas.getContext('2d');
+        var myChart = new Chart(ctx, {
+            type: 'pie',
+            data: {
+                labels: ['GitHub', 'Terraform', 'CSP'],
+                datasets: [{
+                    label: 'ConfigData. 33 is Good. Value -> ',
+                    data: chartData,
+                    backgroundColor: [
+                        'rgba(255, 99, 132, 0.2)',
+                        'rgba(54, 162, 235, 0.2)',
+                        'rgba(255, 206, 86, 0.2)'
+                    ],
+                    borderColor: [
+                        'rgba(255, 99, 132, 1)',
+                        'rgba(54, 162, 235, 1)',
+                        'rgba(255, 206, 86, 1)'
+                    ],
+                    borderWidth: 1
+                }]
+            }
+        });
+    </script>
+        
+
+
+<%- include('footer') -%>

@@ -1,0 +1,174 @@
+<%- include('header_inside') -%>
+<%- include('navbar') -%>
+<br/><br/><br/>
+
+
+
+
+<div class="container  py-1" >
+  <% if(typeof errors != 'undefined') { %>
+    <% errors.forEach(error=>{ %>
+
+            <h6 style="color: black;text-align: center;"> 
+                <%= error.message %>
+            </h6>
+
+    <% }) %>
+<% }else{ %> 
+  <h6 style="color: black;text-align: center;"> 
+    Trust us to help you ... We are NM Certified
+</h6> 
+  <% } %>
+  </div>
+</div>
+
+<div class="container p-3 bg-info bg-opacity-10 border border-info border-start-1 ">
+
+<form action="/route/gitconf" method="post" >
+<div class=" container  border py-1">
+    Source Repository <img src='/assets/GitHub.png' style="height: 35px;">
+    
+</div>
+<br/>
+<div class="row g-3 align-items-center">
+    <div class="col-auto">
+        <label for="gitkey" class="col-form-label">GitHub Key</label>
+    </div>
+
+    <div class="col-auto">
+      <input type="text" id="gitkey" name="gitkey" class="form-control" >
+    </div>
+
+    <div class="col-auto">
+        <label for="gitorg2" class="col-form-label">GitHub Organization</label>
+    </div>
+    <div class="col-auto">
+      <input type="text" id="gitorg" name="gitorg" class="form-control" >
+    </div>
+
+    <div class="col-auto">
+      <span id="passwordHelpInline1" class="form-text">
+        <button class="btn btn-primary" type="submit">Configure</button>
+      
+        <button class="btn  btn-outline-success" type="button" data-bs-toggle="offcanvas" data-bs-target="#staticBackdrop" aria-controls="staticBackdrop">
+            ?
+        </button>
+          
+       
+
+          <%- include('help_git') -%>
+      </span>
+    </div>
+
+  </div>
+
+</form>
+
+<br />
+
+
+<form action="/route/tfconf" method="post" >
+<div class="container  border py-1">
+    Infrastructure Provisioning  <img src='/assets/tf.png' style="height: 35px;">
+</div>
+<br/>
+<div class=" g-3 align-items-center">
+    <div class="col-auto">
+      <label for="tfkey" class="col-form-label">Terraform Organization Key</label>
+    </div>
+    <div class="col-auto">
+      <input type="text" id="tfkey" name="tfkey" class="form-control" >
+    </div>
+
+    <div class="col-auto">
+      <label for="tfteamkey" class="col-form-label">Terraform Teams Key</label>
+    </div>
+    <div class="col-auto">
+      <input type="text" id="tfteamkey" name="tfteamkey" class="form-control" >
+    </div>
+    <div class="col-auto">
+      <label for="tforg2" class="col-form-label">Terraform Organization</label>
+    </div>
+    <div class="col-auto">
+      <input type="text" id="tforg" name="tforg" class="form-control" >
+    </div>
+    <br/>
+
+    <div class="col-auto">
+      <span id="passwordHelpInline2" class="form-text">
+        <button class="btn btn-primary" type="submit">Configure</button>
+        <button class="btn btn-outline-success" type="button" data-bs-toggle="offcanvas" data-bs-target="#staticBackdrop2" aria-controls="staticBackdrop">
+            ?
+        </button>
+          
+        <div class="offcanvas offcanvas-start" data-bs-backdrop="static" tabindex="-1" id="staticBackdrop2" aria-labelledby="staticBackdropLabel">
+            <div class="offcanvas-header">
+              <h5 class="offcanvas-title" id="staticBackdropLabel2">How to get Terraform Cloud Key</h5>
+              <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+            </div>
+            <div class="offcanvas-body">
+              <div>
+                Process to get the Terraform Cloud Key with right Permission
+              </div>
+            </div>
+        </div>
+      </span>
+    </div>
+  </div>
+</form>
+
+
+<br />
+
+<form action="/route/cloudconf" method="post" >
+<div class="container  border py-1">
+    Cloud Service Provider  <img src='/assets/gcp.png' style="height: 35px;">
+</div>
+<br/>
+<div class="row g-3 align-items-center">
+
+    <div class="col-auto">
+        <label for="cspkey" class="form-label">Cloud Service Provider Key</label>
+    </div>
+    <div class="col-auto">
+        <input type="text" id="cspkey" name="cspkey" class="form-control" >
+    </div>
+
+    <div class="col-auto">
+      <label for="cspkey" class="form-label">Project ID</label>
+    </div>
+    <div class="col-auto">
+        <input type="text" id="cspprjid" name="cspprjid" class="form-control" >
+    </div>
+
+
+    <div class="col-auto">
+      <span id="passwordHelpInline3" class="form-text">
+        <button class="btn btn-primary" type="submit">Configure</button>
+        <button class="btn btn-outline-success" type="button" data-bs-toggle="offcanvas" data-bs-target="#staticBackdrop3" aria-controls="staticBackdrop">
+            ?
+        </button>
+          
+        <div class="offcanvas offcanvas-start" data-bs-backdrop="static" tabindex="-1" id="staticBackdrop3" aria-labelledby="staticBackdropLabel">
+            <div class="offcanvas-header">
+              <h5 class="offcanvas-title" id="staticBackdropLabel3">How to get Cloud Service Provider Key</h5>
+              <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+            </div>
+            <div class="offcanvas-body">
+              <div>
+                Process to get the CSP Key with right Permission
+              </div>
+            </div>
+        </div>
+      </span>
+    </div>
+  </div>
+</form>
+
+
+
+
+
+  
+
+<%- include('footer') -%>

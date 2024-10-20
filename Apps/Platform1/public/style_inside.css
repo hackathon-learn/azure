@@ -1,0 +1,51 @@
+.btn.btn-success{
+    padding: .4em 2em;
+}
+
+.center-div{
+    padding-top: 10%;
+}
+
+form{
+    padding: 0 3em;
+}
+
+
+
+body{
+    background-color: rgb(255, 255, 255);
+}
+
+h2,h6 {
+    color: rgb(255, 255, 255);
+}
+
+.signup-form {
+    color: rgb(255, 255, 255);
+}
+.popup {
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: rgba(0, 0, 0, 0.5);
+    padding: 8px;
+    border-radius: 5px;
+    z-index: 999;
+    width: 200px;
+}
+
+.popup-content {
+    background-color: #fff;
+    padding: 8px;
+    border-radius: 5px;
+    position: relative;
+}
+
+.close {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    cursor: pointer;
+}

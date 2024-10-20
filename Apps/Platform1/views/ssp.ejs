@@ -1,0 +1,85 @@
+<%- include('header_inside') -%>
+<%- include('navbar') -%>
+<% if (locals.depstatus) { %>
+    <% if (locals.depstatus != "a3") { %>
+          <div class="alert alert-primary alert-dismissible fade show z-3 position-absolute p-5 rounded-3 bottom-0 end-0" style="width: 500px; height: 10px;" role="alert">
+            <%=locals.depstatus%> <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+          </div>
+<% }} %>
+<% if (locals.errors) { %>
+    <% if (locals.depstatus != "a3") { %>
+          <div class="alert alert-warning alert-dismissible fade show z-3 position-absolute p-5 rounded-3 bottom-0 end-0" role="alert">
+            <strong>Thats an error !</strong> <%=locals.errors%>>
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+          </div>
+<% }} %>
+<div class="row align-items-start" style="padding-top: 5rem;padding-left: 5rem;width: 95rem;"> 
+    
+    <div class="col">
+        <% const patterns = ['familyman', 'admin','.github-private','terraform','dssp']; %>
+        <% repos.forEach(element => {%>
+            <% const containsPattern = patterns.some(pattern => element.name.includes(pattern)) ;%>
+            <% if (!containsPattern) {%>
+              <form action="/route/pushsolution" method="post" class="form-label" >
+        <div class="card" style="width: 46rem;height: 6rem;">
+            <div class="card-header" style="height: 2.5rem;">
+              <%= element.name.replace(/-/gi,' '); %>
+              <input type="text" name="reponame" value="<%= element.name%>" hidden>
+            </div>
+            <div class="card-body">
+              <p class="card-text"><%= element.description %>. <i>Released on : <%= element.lastUpdated %></i>&nbsp
+              <button type="submit" class="btn btn-outline-primary btn-sm">Get this now</button>
+            </p>
+            </div>
+          </div>
+        </form>
+          <br />
+        <%}});%>   
+      </form>
+    </div>
+
+    <div class="col">
+        <form action="/route/docker" method="post" id="myForm">
+            <div class="card" style="width: 29rem; align-items: center;">
+                <div class="card-body" >
+                    <h5 class="card-title">Deployment Controls</h5>
+                    <h6 class="card-subtitle mb-2 text-body-secondary">Helps you to stay updated with latest features.</h6>
+                    <div class="btn-group" role="group" aria-label="Basic outlined example">
+                        <button type="submit" name="action" value="a1" class="btn btn-outline-primary" >Current Version</button>
+                        <button type="submit" name="action" value="a2" class="btn btn-outline-primary" >Latest Version</button>
+                        <button type="submit" id="action3" name="action" value="a3" class="btn btn-outline-primary" >Deploy or Update</button>
+                    </div>
+                </div>
+            </div>
+        </form>
+</div>
+</div>
+
+
+
+
+
+
+<script>
+  function showPopup() {
+    document.getElementById('popup').style.display = 'block';
+    void document.getElementById('popup').offsetWidth;
+    document.getElementById('popup').style.opacity = '1';
+}
+
+
+function closePopup() {
+    document.getElementById('popup').style.opacity = '0';
+
+    setTimeout(function() {
+        document.getElementById('popup').style.display = 'none';
+    }, 500); 
+}
+
+window.onload = showPopup;
+
+
+</script>
+
+<%- include('footer') -%>
+

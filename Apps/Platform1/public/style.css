@@ -1,0 +1,31 @@
+.btn.btn-success{
+    padding: .4em 2em;
+}
+
+.center-div{
+    padding-top: 10%;
+}
+
+form{
+    padding: 0 3em;
+}
+
+body{
+    background-image: url('/assets/home_background.png');
+    background-size: cover;
+    background-repeat: repeat;
+}
+
+
+h2,h6 {
+    color: rgb(255, 255, 255);
+}
+
+.signup-form {
+    color: rgb(255, 255, 255);
+}
+
+
+
+
+
