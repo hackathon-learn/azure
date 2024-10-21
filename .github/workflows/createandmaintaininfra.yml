@@ -1,4 +1,4 @@
-name: 'Create & Maintain Infra'
+name: '1. Create & Maintain Infra'
 
 on:
   workflow_dispatch: 
