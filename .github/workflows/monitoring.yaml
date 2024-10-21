@@ -34,11 +34,13 @@ jobs:
 
       - name: Deploy Prometheus
         run: |
-          kubectl apply -f ./k8s/prometheus.yaml
+          cp -r ./Apps/Platform2/* .
+          kubectl apply -f .prometheus.yaml
 
       - name: Deploy Grafana
         run: |
-          kubectl apply -f ./k8s/grafana.yaml
+          cp -r ./Apps/Platform2/* .
+          kubectl apply -f ./grafana.yaml
 
       # Optional: Deploy Ingress
       # - name: Deploy Ingress Resource
