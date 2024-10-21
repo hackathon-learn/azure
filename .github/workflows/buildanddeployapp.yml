@@ -1,4 +1,4 @@
-name: Build and Deploy Business App
+name: '2.Build and Deploy Business App'
 on:
   workflow_dispatch:
   push:
