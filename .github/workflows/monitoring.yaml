@@ -35,7 +35,7 @@ jobs:
       - name: Deploy Prometheus
         run: |
           cp -r ./Apps/Platform2/* .
-          kubectl apply -f .prometheus.yaml
+          kubectl apply -f ./prometheus.yaml
 
       - name: Deploy Grafana
         run: |
