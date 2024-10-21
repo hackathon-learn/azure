@@ -1,0 +1,58 @@
+name: Deploy Grafana and Prometheus
+
+on:
+    workflow_dispatch:
+    push:
+      paths:
+        - 'Apps/Platform2/**'
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      #- name: Set up Azure CLI
+      #  uses: azure/setup-azure@v1
+
+      - name: 'Login via Azure CLI'
+        uses: azure/login@v1
+        with:
+          creds: ${{ secrets.AZURE_CREDENTIALS }}
+
+      #- name: Login to Azure
+      #  env:
+      #    AZURE_CREDENTIALS: ${{ secrets.AZURE_CREDENTIALS }}
+      #  run: |
+      #    echo $AZURE_CREDENTIALS | az login --service-principal --username $AZURE_CLIENT_ID --password $AZURE_CLIENT_SECRET --tenant $AZURE_TENANT_ID
+
+      - name: Get AKS Credentials
+        run: |
+          az aks get-credentials --resource-group ${{ secrets.RESOURCE_GROUP }} --name platform1aks1
+
+      - name: Deploy Prometheus
+        run: |
+          kubectl apply -f ./k8s/prometheus.yaml
+
+      - name: Deploy Grafana
+        run: |
+          kubectl apply -f ./k8s/grafana.yaml
+
+      # Optional: Deploy Ingress
+      # - name: Deploy Ingress Resource
+      #   run: |
+      #     kubectl apply -f ./k8s/ingress.yaml
+
+      - name: Wait for Services
+        run: |
+          echo "Waiting for services to be provisioned..."
+          sleep 60 # Adjust based on your needs
+
+      - name: Get External IPs
+        run: |
+          echo "Prometheus External IP:"
+          kubectl get svc -n monitoring prometheus
+          echo "Grafana External IP:"
+          kubectl get svc -n monitoring grafana
