@@ -28,7 +28,7 @@ provider "azurerm" {
 
 resource "azurerm_resource_group" "platform1_rg" {
   name     = "platform1rg1"
-  location = "West Europe"
+  location = "North Europe"
 }
 
 resource "azurerm_container_registry" "platform1_cr" {
