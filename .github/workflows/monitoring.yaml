@@ -1,4 +1,4 @@
-name: '3.Deploy Grafana and Prometheus'
+name: '3. Deploy Grafana and Prometheus'
 
 on:
     workflow_dispatch:
