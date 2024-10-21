@@ -20,7 +20,7 @@ spec:
             - containerPort: 3000
           env:
             - name: GF_SECURITY_ADMIN_PASSWORD
-              value: "admin"  # Set your admin password here
+              value: "admin"  # Set your admin password here.
 
 ---
 apiVersion: v1
